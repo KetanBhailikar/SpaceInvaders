@@ -13,8 +13,7 @@ class enemyBullets():
         self.posy = y
 
     def travel(self, scr):
-        pygame.draw.rect(scr, (255, 255, 255), pygame.Rect(
-            self.posx-2.5, self.posy, 5, 8))
+        pygame.draw.rect(scr, (255, 255, 255), pygame.Rect(int(self.posx-2.5), int(self.posy), 5, 8))
         self.posy += 0.9
 
 
@@ -25,8 +24,7 @@ class Bullet:
 
     def travel(self, scr):
         # draw the bullet and move it forward
-        pygame.draw.rect(scr, (0, 255, 0), pygame.Rect(
-            self.posx-1.5, self.posy, 3, 6))
+        pygame.draw.rect(scr, (0, 255, 0), pygame.Rect(int(self.posx-1.5), int(self.posy), 3, 6))
         self.posy -= 0.6
 
 
@@ -48,7 +46,7 @@ class Player:
             self.posx = screenWidth - 20
         if self.posx <= 20:
             self.posx = 20
-        scr.blit(image, ((self.posx-20, self.posy-15)))
+        scr.blit(image, ((int(self.posx-20), int(self.posy-15))))
 
 
 class Enemy:
@@ -60,7 +58,7 @@ class Enemy:
 
     def drawEnemy(self, scr, image):
         # change the color depending on its health and also draw it
-        scr.blit(image, ((self.posx-15, self.posy-15)))
+        scr.blit(image, ((int(self.posx-15), int(self.posy-15))))
         # pygame.draw.circle(scr, (color, color, color),
         #                    (self.posx, self.posy), 10)
 
@@ -230,15 +228,15 @@ def gameOver(score, lent):
 
     # render the text (Score and "Press Space to Restart")
     textrect = gameover.get_rect()
-    textrect.center = (screenWidth/2, screenHeight/2-50)
+    textrect.center = (int(screenWidth/2), int(screenHeight/2-50))
     restart = fontsmall.render(
         'Press Space to Restart', False, (255, 255, 255))
     textrect2 = restart.get_rect()
-    textrect2.center = (screenWidth/2, screenHeight/2 + 50)
+    textrect2.center = (int(screenWidth/2), int(screenHeight/2 + 50))
     scoreText = fontsmall.render(
         'Score : ' + str(score), False, (255, 255, 255))
     textrect3 = scoreText.get_rect()
-    textrect3.center = (screenWidth/2, screenHeight/2)
+    textrect3.center = (int(screenWidth/2), int(screenHeight/2))
 
     # game loop
     loop = True
